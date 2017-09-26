@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media.Media3D;
 
 namespace MathMatrix
@@ -32,7 +28,7 @@ namespace MathMatrix
             //On obtient la matrice identitaire (celle de base)
             Matrix3D modificationMatrix = Matrix3D.Identity;
             //On converti les degrés Euler en Quaternions
-            Quaternion rotation = EulerToQuaternion(yaw, pitch, roll);
+            Quaternion rotation = EulerToQuaternion(yaw * Math.PI/180, pitch * Math.PI / 180, roll * Math.PI / 180);
 
             //Si il y a une translation à faire, on la fait
             modificationMatrix.Translate(offset);
