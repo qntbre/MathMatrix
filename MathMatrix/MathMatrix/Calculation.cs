@@ -23,12 +23,15 @@ namespace MathMatrix
             return new Quaternion(x, y, z, w);
         }
 
+        public static Func<double, double> DegRad = x => x * Math.PI / 180; // Converti les degrés en radians
+        public static Func<double, double> RadDeg = x => x * 180 / Math.PI; // Converti les radians en degrés
+
         public static Matrix3D GetModificationMatrix(double yaw, double pitch, double roll, Point3D rotationPoint, Vector3D offset)
         {
             //On obtient la matrice identitaire (celle de base)
             Matrix3D modificationMatrix = Matrix3D.Identity;
             //On converti les degrés Euler en Quaternions
-            Quaternion rotation = EulerToQuaternion(yaw * Math.PI/180, pitch * Math.PI / 180, roll * Math.PI / 180);
+            Quaternion rotation = EulerToQuaternion(DegRad(yaw), DegRad(pitch), DegRad(roll));
 
             //Si il y a une translation à faire, on la fait
             modificationMatrix.Translate(offset);
