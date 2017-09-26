@@ -16,8 +16,8 @@ namespace MathMatrix
             double sp = Math.Sin(pitch * 0.5);
 
             double w = cy * cr * cp + sy * sr * sp;
-            double x = cy * sr * cp - sy * cr * sp;
-            double y = cy * cr * sp + sy * sr * cp;
+            double x = cy * cr * sp + sy * sr * cp;
+            double y = cy * sr * cp - sy * cr * sp;
             double z = sy * cr * cp - cy * sr * sp;
 
             return new Quaternion(x, y, z, w);
